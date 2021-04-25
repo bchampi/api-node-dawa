@@ -57,6 +57,20 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(200).send('Persona borrada')
 })
 
+app.post('/api/persons', (request, response) => {
+    let persons = {
+        id: getRandomArbitrary(10, 100),
+        name: request.params.id,
+        number: request.params.number
+    }
+    response.json(persons)
+
+})
+
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 const PORT = 3001
 app.listen(PORT)
 console.log(`Server running on port ${PORT}`)
