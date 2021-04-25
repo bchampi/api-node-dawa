@@ -39,6 +39,13 @@ app.get('/info', (request, response) => {
     response.send(countPersons + '</br>' + hoy)
 })
 
+app.get('/api/persons/:id', (request, response) => {
+    let id = parseInt(request.params.id)
+    response.json(schedule.find(person => {
+        return person.id === id
+    }))
+})
+
 const PORT = 3001
 app.listen(PORT)
 console.log(`Server running on port ${PORT}`)
