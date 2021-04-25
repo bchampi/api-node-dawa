@@ -1,5 +1,4 @@
-// const http = require('http')
-const express = require('express')
+import express from 'express'
 const app = express()
 
 let schedule = [
