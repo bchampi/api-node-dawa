@@ -1,4 +1,4 @@
-const http = require('http')
+// const http = require('http')
 const express = require('express')
 const app = express()
 
@@ -58,6 +58,18 @@ app.delete('/api/persons/:id', (request, response) => {
 })
 
 app.post('/api/persons', (request, response) => {
+    if (!request.params.name && !request.params.number) {
+        return response.status(400).send('Falta el nombre y teléfono')
+    }
+
+    let person = schedule.find(person => {
+        return person.id === request.params.id
+    })
+
+    if (person === request.params.name) {
+        return response.status(400).send('El nombre de la persona ya existe')
+    }
+
     let persons = {
         id: getRandomArbitrary(10, 100),
         name: request.params.id,
