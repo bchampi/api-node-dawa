@@ -41,9 +41,14 @@ app.get('/info', (request, response) => {
 
 app.get('/api/persons/:id', (request, response) => {
     let id = parseInt(request.params.id)
-    response.json(schedule.find(person => {
+    let person = schedule.find(person => {
         return person.id === id
-    }))
+    })
+    if (person) {
+        response.json(person)
+    } else {
+        response.status(500).send('Persona no encontrada')
+    }
 })
 
 const PORT = 3001
