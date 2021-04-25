@@ -51,6 +51,12 @@ app.get('/api/persons/:id', (request, response) => {
     }
 })
 
+app.delete('/api/persons/:id', (request, response) => {
+    let id = parseInt(request.params.id)
+    schedule = schedule.filter(schedule => schedule.id !== id)
+    response.status(200).send('Persona borrada')
+})
+
 const PORT = 3001
 app.listen(PORT)
 console.log(`Server running on port ${PORT}`)
