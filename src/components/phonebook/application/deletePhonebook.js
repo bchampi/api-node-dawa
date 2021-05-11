@@ -3,8 +3,8 @@
  * @param {import('../infrastructure/MongoPhonebooksRepository')} obj.PhonebooksRepository
  */
 export default ({ PhonebooksRepository }) => {
-  return async ({ id }) => { // parameters
+  return async (id) => { // parameters
     if (!id) throw new Error('validation failed')
-    return PhonebooksRepository.getById(id)
+    return PhonebooksRepository.delete({ id })
   }
 }

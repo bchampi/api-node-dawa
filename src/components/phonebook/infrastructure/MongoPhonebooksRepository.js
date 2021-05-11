@@ -15,8 +15,12 @@ class MongoPhonebooksRepository {
     return this.mongoDB.getAll(this.collection)
   }
 
-  async getById ({ id }) {
-    return await this.mongoDB.get(this.collection, null, { id })
+  async getByName ({ name }) {
+    return this.mongoDB.get(this.collection, null, { name })
+  }
+
+  async update (id, person) {
+    return this.mongoDB.update(this.collection, id, person)
   }
 
   async delete ({ id }) {

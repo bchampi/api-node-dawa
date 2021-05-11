@@ -11,7 +11,7 @@ export default ({ PhonebooksRepository }) => {
     }
 
     function getRandomArbitrary (min, max) {
-      return parseInt(Math.random() * (max - min) + min)
+      return parseInt(Math.random() * (max - min) + min).toString()
     }
     return PhonebooksRepository.add(persons)
   }
